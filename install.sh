@@ -1,5 +1,7 @@
 #!/bin/bash
-echo "Proceeding with server startup"
+echo "Proceeding with server startup..."
+echo "id is $(id)"
+echo "groups are $(groups)"
 
 rootDir=$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")
 scriptsDir="${rootDir}/scripts"

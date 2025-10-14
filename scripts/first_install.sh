@@ -12,8 +12,10 @@ fi
 
 echo "[INFO] Executing LinuxGSM script to get default files"
 
+ls -lar ./sdtdserver
 # Start to create default files
-./sdtdserver
+su-exec sdtdserver bash ./sdtdserver
+
 
 echo "[INFO] Changing 7 days to die server version to install"
 
@@ -31,7 +33,7 @@ echo "[INFO] Installing 7 days to die ${VERSION,,} version"
 
 # Install 7 Days To Die Server
 
-./sdtdserver auto-install
+su-exec sdtdserver bash ./sdtdserver auto-install
 
 echo "[INFO] The server have been installed."
 

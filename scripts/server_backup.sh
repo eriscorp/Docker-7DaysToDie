@@ -7,7 +7,7 @@ BACKUP_DESTINATION="/home/sdtdserver/lgsm/backup/"
 scriptsDir="/home/sdtdserver/scripts"
 
 echo "[BACKUP] Stopping 7 Days To Die"
-./sdtdserver stop
+su-exec sdtdserver bash ./sdtdserver stop
 
 # Disable crontab and montoring if enabled
 crontab -r
@@ -31,4 +31,4 @@ echo "[BACKUP] Removeing backups older than $BACKUP_MAX days"
 find "$BACKUP_DESTINATION" -type f -name "*.tar.gz" -mtime +$BACKUP_MAX -delete
 
 echo "[BACKUP] Starting 7 Days To Die"
-./sdtdserver start
+su-exec sdtdserver bash ./sdtdserver start

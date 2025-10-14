@@ -2,4 +2,4 @@
 
 echo "[INFO] Starting server..."
 
-./sdtdserver start
+su-exec sdtdserver bash ./sdtdserver start
