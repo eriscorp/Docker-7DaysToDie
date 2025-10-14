@@ -1,4 +1,6 @@
 #!/bin/bash
+echo "Proceeding with server startup"
+
 rootDir=$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")
 scriptsDir="${rootDir}/scripts"
 
@@ -10,12 +12,14 @@ show_log () {
 
 test_alert () {
    if [ "${TEST_ALERT,,}" == 'yes'  ]; then
+      echo "Running alert test"
       source "$scriptsDir/server_alerts.sh"
    fi
 }
 
 # Check if server have been installed, if missing file
 if [ ! -f serverfiles/DONT_REMOVE.txt ]; then
+   echo "Running first install"
    source "$scriptsDir/first_install.sh"
 fi
 
@@ -34,6 +38,7 @@ source "$scriptsDir/utils/crontab.sh"
 # Use of case to avoid errors if used wrong START_MODE
 case $START_MODE in
    0)
+      echo "Nothing to do"
       exit
    ;;
    1)
